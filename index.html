@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mesto</title>
+    <link rel="stylesheet" href="./pages/index.css">
+</head>
+
+<body class="body">
+
+    <div class="page">
+
+        <!-- Header -->
+        <header class="header">
+            <img src="./image/logo.png" alt="Логотип" class="header__logo">
+            <div class="header__line"></div>
+        </header>
+
+        <!-- profile -->
+        <div class="profile">
+            <div class="profile__content">
+                <img src="./image/Face.jpg" alt="Аватар" class="profile__avatar">
+                <div class="profile-info">
+                    <h1 class="profile-info__title">Жак-Ив Кусто</h1>
+                    <h2 class="profile-info__subtitle">Исследователь океана</h2>
+                    <button class="edit-button"></button>
+                </div>
+            </div>
+            <button class="add-button"></button>
+        </div>
+
+        <!-- elements -->
+        <div class="elements">
+            <div class="element">
+                <img src="./image/Machu-picchu.jpg" alt="Мачу-Пикчу" class="element__image">
+                <div class="element__description">
+                    <div class="element__title">Мачу-Пикчу</div>
+                    <div class="element__like"></div>
+                </div>
+            </div>
+            <div class="element">
+                <img src="./image/Great-wall.jpg" alt="Великая Китайская стена" class="element__image">
+                <div class="element__description">
+                    <div class="element__title">Великая Китайская стена</div>
+                    <div class="element__like"></div>
+                </div>
+            </div>
+            <div class="element">
+                <img src="./image/Parthenon.jpg" alt="Парфенон" class="element__image">
+                <div class="element__description">
+                    <div class="element__title">Парфенон</div>
+                    <div class="element__like"></div>
+                </div>
+            </div>
+            <div class="element">
+                <img src="./image/Petra.jpg" alt="Петра" class="element__image">
+                <div class="element__description">
+                    <div class="element__title">Петра</div>
+                    <div class="element__like"></div>
+                </div>
+            </div>
+            <div class="element">
+                <img src="./image/Piramid.jpg" alt="Пирамида" class="element__image">
+                <div class="element__description">
+                    <div class="element__title">Пирамида</div>
+                    <div class="element__like"></div>
+                </div>
+            </div>
+            <div class="element">
+                <img src="./image/Stonehenge.jpg" alt="Стоунхендж" class="element__image">
+                <div class="element__description">
+                    <div class="element__title">Стоунхендж</div>
+                    <div class="element__like"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- footer -->
+        <footer class="footer">
+            <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+        </footer>
+
+        <!-- popup -->
+        <section class="overlay">
+            <div class="popup">
+                <h2 class="popup__title">Редактировать профиль</h2>
+                <form class="popup__form" novalidate>
+                    <input class="popup__input popup__input_type_name" minlength="2" maxlength="50" placeholder="Имя"
+                        value="Жак-Ив Кусто" required>
+                    <input class="popup__input popup__input_type_job" minlength="2" maxlength="50"
+                        placeholder="Род деятельности" value="Исследователь океана" required>
+                </form>
+                <button class="close-button"></button>
+                <button class="save-btn">Сохранить</button>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="./index.js"></script>
+
+</body>
+
+</html>

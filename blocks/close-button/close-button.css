@@ -1,0 +1,16 @@
+.close-button {
+    background: none;
+    border: none;
+    box-shadow: none;
+    background-image: url(../../image/Close\ Icon.png);
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    top: -40px;
+    right: -40px;
+    cursor: pointer;
+}
+
+.close-button:hover {
+    opacity: 0.6;
+}

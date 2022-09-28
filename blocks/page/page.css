@@ -1,0 +1,23 @@
+.page {
+    position: relative;
+    height: 1217px;
+    padding: 0 200px;
+}
+
+@media (max-width: 1150px) {
+    .page {
+        padding: 0 100px;
+    }    
+}
+
+@media (max-width: 1024px) {
+    .page {
+        padding: 10px;
+    }    
+}
+
+@media (max-width: 640px) {
+    .page {
+        padding: 0px;
+    }    
+}
