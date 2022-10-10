@@ -2,4 +2,9 @@
     width: 100%;
     aspect-ratio: 1;
     grid-column: span 2;
+    cursor: pointer;
+}
+
+.element__image:hover {
+    filter: brightness(50%);
 }
