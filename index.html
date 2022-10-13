@@ -42,33 +42,34 @@
             <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
         </footer>
 
-        <!-- image-popup -->
-        <section class="image-popup">
-            <div class="image-popup__content">
-                <img src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg" alt=""
-                    class="image-popup__image">
-                <p class="image-popup__name"></p>
-                <button class="image-popup__close-button" type="button"></button>
-            </div>
-        </section>
-
         <!-- popup profile -->
-        <section class="popup">
+        <section class="popup" id="profile-popup">
             <div class="popup__content">
                 <h2 class="popup__title">Редактировать профиль</h2>
                 <form class="popup__form" name="popup" novalidate>
                     <input class="popup__input popup__input_type_name" name="name" minlength="2" maxlength="50"
-                        placeholder="Имя" value="Жак-Ив Куст" required>
+                        placeholder="Имя" required>
                     <input class="popup__input popup__input_type_job" name="job" minlength="2" maxlength="50"
-                        placeholder="Род деятельности" value="Исследователь океан" required>
+                        placeholder="Род деятельности" required>
                     <button class="popup__save-button" type="submit">Сохранить</button>
                 </form>
                 <button class="popup__close-button" type="button"></button>
             </div>
         </section>
 
-        <!-- popup add Card -->
-        <section class="popup popup_add-card">
+        <!-- image-popup -->
+        <section class="popup image-popup" id="image-popup">
+            <div class="image-popup__content">
+                <form class="popup__form" name="popup" novalidate>
+                    <img src="" alt="" class="image-popup__image">
+                    <p class="image-popup__name"></p>
+                </form>
+                <button class="popup__close-button image-popup__close-button" type="button"></button>
+            </div>
+        </section>
+
+        <!-- popup Card -->
+        <section class="popup" id="card-popup">
             <div class="popup__content">
                 <h2 class="popup__title">Новое место</h2>
                 <form class="popup__form" name="popup" novalidate>
