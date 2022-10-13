@@ -4,8 +4,8 @@ const cardPopup = document.querySelector('#card-popup');
 const profilePopup = document.querySelector('#profile-popup');
 
 // Формы
-const profileForm = document.querySelector('#profile-form');
-const cardForm = document.querySelector('#card-form');
+const profileForm = document.querySelector('.popup__form_profile-form');
+const cardForm = document.querySelector('.popup__form_card-form');
 
 // Общие части попапа
 const saveButton = document.querySelector('.popup__save-button');
