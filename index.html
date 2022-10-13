@@ -46,7 +46,7 @@
         <section class="popup" id="profile-popup">
             <div class="popup__content">
                 <h2 class="popup__title">Редактировать профиль</h2>
-                <form class="popup__form" name="popup" novalidate>
+                <form class="popup__form profile-popup__form" name="popup" novalidate>
                     <input class="popup__input popup__input_type_name" name="name" minlength="2" maxlength="50"
                         placeholder="Имя" required>
                     <input class="popup__input popup__input_type_job" name="job" minlength="2" maxlength="50"
@@ -72,12 +72,12 @@
         <section class="popup" id="card-popup">
             <div class="popup__content">
                 <h2 class="popup__title">Новое место</h2>
-                <form class="popup__form" name="popup" novalidate>
+                <form class="popup__form card-popup__form" name="popup" novalidate>
                     <input class="popup__input popup__input_type_place" name="place" minlength="2" maxlength="50"
                         placeholder="Название" required>
                     <input class="popup__input popup__input_type_link" name="link" minlength="2" maxlength="150"
                         placeholder="Ссылка на картинку" required>
-                    <button class="popup__save-button popup__save-button_add-card" type="button">Сохранить</button>
+                    <button class="popup__save-button popup__save-button_add-card" type="submit">Сохранить</button>
                 </form>
                 <button class="popup__close-button popup__close-button_add-card" type="button"></button>
             </div>
@@ -96,7 +96,7 @@
         </template>
 
     </div>
-
+    <script src="./script/cards.js"></script>
     <script src="./script/index.js"></script>
 
 </body>
