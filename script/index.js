@@ -4,8 +4,8 @@ const cardPopup = document.querySelector('#card-popup');
 const profilePopup = document.querySelector('#profile-popup');
 
 // Формы
-const profileForm = document.querySelector('.profile-popup__form');
-const cardForm = document.querySelector('.card-popup__form');
+const profileForm = document.querySelector('#profile-form');
+const cardForm = document.querySelector('#card-form');
 
 // Общие части попапа
 const saveButton = document.querySelector('.popup__save-button');
@@ -40,32 +40,32 @@ const imagePopupImage = document.querySelector('.image-popup__image');
 
 const render = () => {
     items.forEach((item) => {
-        const currentItem = createItemNode(item.name, item.link, item.alt);
-        container.append(currentItem);
+        const currentItems = createItemNode(item.name, item.link, item.alt);
+        container.append(currentItems);
     });
 };
 
 const createItemNode = (name, link, alt) => {
-    const currentItem = template.content.cloneNode(true);
-    const currantName = currentItem.querySelector('.element__title');
-    const image = currentItem.querySelector('.element__image');
+    const currentItems = template.content.cloneNode(true);
+    const currantName = currentItems.querySelector('.element__title');
+    const image = currentItems.querySelector('.element__image');
     currantName.textContent = name;
     image.src = link;
     image.alt = name;
 
     // Для удаления
-    const deleteButton = currentItem.querySelector('.element__trash-button');
+    const deleteButton = currentItems.querySelector('.element__trash-button');
     deleteButton.addEventListener('click', handleDeleteItem);
 
     // Для лайка
-    const likeButton = currentItem.querySelector('.element__like');
+    const likeButton = currentItems.querySelector('.element__like');
     likeButton.addEventListener('click', handleLikeItem);
 
     // img - popup
     image.addEventListener('click', openImagePopup);
     // image.addEventListener('click', () => openImagePopup(name, link));
 
-    return currentItem;
+    return currentItems;
 };
 
 // Удаление карточки 
