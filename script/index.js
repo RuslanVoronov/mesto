@@ -40,32 +40,32 @@ const imagePopupImage = document.querySelector('.image-popup__image');
 
 const render = () => {
     items.forEach((item) => {
-        const currentItems = createItemNode(item.name, item.link, item.alt);
-        container.append(currentItems);
+        const currentItem = createItemNode(item.name, item.link, item.alt);
+        container.append(currentItem);
     });
 };
 
 const createItemNode = (name, link, alt) => {
-    const currentItems = template.content.cloneNode(true);
-    const currantName = currentItems.querySelector('.element__title');
-    const image = currentItems.querySelector('.element__image');
+    const currentItem = template.content.cloneNode(true);
+    const currantName = currentItem.querySelector('.element__title');
+    const image = currentItem.querySelector('.element__image');
     currantName.textContent = name;
     image.src = link;
     image.alt = name;
 
     // Для удаления
-    const deleteButton = currentItems.querySelector('.element__trash-button');
+    const deleteButton = currentItem.querySelector('.element__trash-button');
     deleteButton.addEventListener('click', handleDeleteItem);
 
     // Для лайка
-    const likeButton = currentItems.querySelector('.element__like');
+    const likeButton = currentItem.querySelector('.element__like');
     likeButton.addEventListener('click', handleLikeItem);
 
     // img - popup
     image.addEventListener('click', openImagePopup);
     // image.addEventListener('click', () => openImagePopup(name, link));
 
-    return currentItems;
+    return currentItem;
 };
 
 // Удаление карточки 
