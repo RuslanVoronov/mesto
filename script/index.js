@@ -1,5 +1,3 @@
-// Спасибо вам большое, Сергей, за ваше терпение и полезные советы.
-
 // Объявление Попапов
 const imagePopup = document.querySelector('#image-popup');
 const cardPopup = document.querySelector('#card-popup');
@@ -137,3 +135,32 @@ profileAddButton.addEventListener('click', openCardPopup);
 
 profileForm.addEventListener('submit', formSubmitHandler);
 cardForm.addEventListener('submit', handleAddItem);
+
+
+// закрытие на оверлэй
+imagePopup.addEventListener('click', (evt) => {
+    if (evt.target == evt.currentTarget) {
+        closePopup(imagePopup);
+    };
+});
+
+cardPopup.addEventListener('click', (evt) => {
+    if (evt.target == evt.currentTarget) {
+        closePopup(cardPopup);
+    };
+});
+
+profilePopup.addEventListener('click', (evt) => {
+    if (evt.target == evt.currentTarget) {
+        closePopup(profilePopup);
+    };
+});
+
+// Закрытие на Escape
+document.addEventListener('keydown', function (evt) {
+    if (evt.key === 'Escape') {
+        closePopup(imagePopup);
+        closePopup(cardPopup);
+        closePopup(profilePopup);
+    };
+}); 
