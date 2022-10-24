@@ -101,7 +101,7 @@ function handleAddItem(evt) {
     const item = createItemNode(placeInput.value, linkInput.value);
     container.prepend(item);
     profileForm.reset();
-    closePopup(cardPopup);
+    // closePopup(cardPopup);
 };
 
 // сохранение Profile Popup
@@ -163,4 +163,4 @@ document.addEventListener('keydown', function (evt) {
         closePopup(cardPopup);
         closePopup(profilePopup);
     };
-}); 
+});
