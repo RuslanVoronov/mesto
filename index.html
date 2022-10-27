@@ -47,11 +47,15 @@
             <div class="popup__content">
                 <h2 class="popup__title">Редактировать профиль</h2>
                 <form class="popup__form popup__form_profile-form" name="popup" novalidate>
-                    <input class="popup__input popup__input_type_name" name="name" minlength="2" maxlength="40"
-                        placeholder="Имя" required>
-                    <input class="popup__input popup__input_type_job" name="job" minlength="2" maxlength="200"
+                    <input class="popup__input popup__input_type_name" id="name" name="name" minlength="2"
+                        maxlength="40" placeholder="Имя" required>
+                    <span class="error" id="name-error"></span>
+
+                    <input class="popup__input popup__input_type_job" id="job" name="job" minlength="2" maxlength="200"
                         placeholder="Род деятельности" required>
-                    <button class="popup__save-button" type="submit">Сохранить</button>
+                    <span class="error" id="job-error"></span>
+
+                    <button class="popup__save-button" id="save-button-profile" type="submit">Сохранить</button>
                 </form>
                 <button class="popup__close-button" type="button"></button>
             </div>
@@ -82,9 +86,9 @@
                         placeholder="Ссылка на картинку" type="url" required>
                     <span class="error" id="link-error"></span>
 
-                    <button class="popup__save-button popup__save-button_add-card" type="submit">Сохранить</button>
+                    <button class="popup__save-button" id="save-button-card" type="submit">Сохранить</button>
                 </form>
-                <button class="popup__close-button popup__close-button_add-card" type="button"></button>
+                <button class="popup__close-button" type="button"></button>
             </div>
         </section>
 

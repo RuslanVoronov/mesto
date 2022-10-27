@@ -3,7 +3,9 @@ const imagePopup = document.querySelector('#image-popup');
 const cardPopup = document.querySelector('#card-popup');
 const profilePopup = document.querySelector('#profile-popup');
 
+// Кнопки
 const buttonCloseList = document.querySelectorAll('.popup__close-button');
+const buttonSubmitList = document.querySelectorAll('.popup__save-button');
 
 // Формы
 const profileForm = document.querySelector('.popup__form_profile-form');
