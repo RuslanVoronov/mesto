@@ -102,7 +102,6 @@ function handleAddItem(evt) {
     evt.preventDefault();
     const item = createItemNode(placeInput.value, linkInput.value);
     container.prepend(item);
-    submitButtonCard.classList.add('popup__save-button_invalid');
     cardForm.reset();
     closePopup(cardPopup);
 };

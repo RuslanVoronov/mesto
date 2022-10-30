@@ -2,8 +2,8 @@ const setting = {
     form: '.popup__form',
     input: '.popup__input',
     submitButton: '.popup__save-button',
-    activeButton: 'popup__save-button_valid',
-    inputError: '.popup__error',
+    inActiveButton: 'popup__save-button_invalid',
+    inputError: 'popup__error',
     errorClass: 'popup__error_visible'
 }
 
@@ -25,7 +25,7 @@ const setEventListeners = (formElement, setting) => {
 
     inputList.forEach((inputElement) => {
         inputElement.addEventListener('input', function () {
-            toggleInputErrorState(formElement, inputElement, setting.inputError, setting.errorClass);
+            toggleInputErrorState(formElement, inputElement, setting);
             toggleButtonState(inputList, buttonElement, setting.submitButton);
         });
     });
@@ -41,17 +41,16 @@ function toggleInputErrorState(formElement, inputElement, setting) {
 // Показать поле ошибки
 function showInputError(formElement, inputElement, errorMessage, setting) {
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-
     inputElement.classList.add(setting.inputError);
     errorElement.textContent = errorMessage;
-    errorElement.classList.add(setting.errorClass);
+    inputElement.classList.add(setting.errorClass);
 };
 // Скрыть поле ошибки
 function hideInputError(formElement, inputElement, setting) {
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
 
     inputElement.classList.remove(setting.inputError);
-    errorElement.classList.remove(setting.errorClass);
+    inputElement.classList.remove(setting.errorClass);
     errorElement.textContent = '';
 };
 //  Проверка инпута на валидность
@@ -63,10 +62,10 @@ function hasInvalidInput(inputList) {
 // Переключатель кнопки
 function toggleButtonState(inputList, buttonElement, setting) {
     if (hasInvalidInput(inputList)) {
-        buttonElement.classList.remove('popup__save-button_valid');
+        buttonElement.classList.add('popup__save-button_invalid');
         buttonElement.disabled = true;
     } else {
-        buttonElement.classList.add('popup__save-button_valid');
+        buttonElement.classList.remove('popup__save-button_invalid');
         buttonElement.disabled = false;
     }
 }
