@@ -160,3 +160,4 @@ cardForm.addEventListener('submit', handleAddItem);
 // Закрытие на оверлэй
 profilePopup.addEventListener('mousedown', closePopupOnOverlay);
 cardPopup.addEventListener('mousedown', closePopupOnOverlay);
+imagePopup.addEventListener('mousedown', closePopupOnOverlay);
