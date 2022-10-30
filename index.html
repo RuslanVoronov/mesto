@@ -46,16 +46,18 @@
         <section class="popup" id="profile-popup">
             <div class="popup__content">
                 <h2 class="popup__title">Редактировать профиль</h2>
-                <form class="popup__form popup__form_profile-form" name="popup" novalidate>
+                <form class="popup__form" id="profile-form" name="profile-form" novalidate>
+
                     <input class="popup__input popup__input_type_name" id="name" name="name" minlength="2"
                         maxlength="40" placeholder="Имя" required>
-                    <span class="error" id="name-error"></span>
+                    <span class="popup__error" id="name-error"></span>
 
                     <input class="popup__input popup__input_type_job" id="job" name="job" minlength="2" maxlength="200"
                         placeholder="Род деятельности" required>
-                    <span class="error" id="job-error"></span>
+                    <span class="popup__error" id="job-error"></span>
 
-                    <button class="popup__save-button" id="save-button-profile" type="submit">Сохранить</button>
+                    <button class="popup__save-button" id="save-button-profile" type="submit"
+                        disabled="true">Сохранить</button>
                 </form>
                 <button class="popup__close-button" type="button"></button>
             </div>
@@ -64,11 +66,11 @@
         <!-- image-popup -->
         <section class="popup image-popup" id="image-popup">
             <div class="image-popup__content">
-                <form class="popup__form" name="popup">
-                    <img src="#" alt="" class="image-popup__image">
-                    <p class="image-popup__name"></p>
-                </form>
-                <button class="popup__close-button image-popup__close-button" type="button"></button>
+
+                <img src="#" alt="" class="image-popup__image">
+                <p class="image-popup__name"></p>
+
+                <button class="popup__close-button" type="button"></button>
             </div>
         </section>
 
@@ -76,17 +78,18 @@
         <section class="popup" id="card-popup">
             <div class="popup__content">
                 <h2 class="popup__title">Новое место</h2>
-                <form class="popup__form popup__form_card-form" name="popup" novalidate>
+                <form class="popup__form" id="card-form" name="card-form" novalidate>
 
                     <input class="popup__input popup__input_type_place" id="place" name="place" minlength="2"
                         maxlength="30" placeholder="Название" required>
-                    <span class="error" id="place-error"></span>
+                    <span class="popup__error" id="place-error"></span>
 
                     <input class="popup__input popup__input_type_link" id="link" name="link"
                         placeholder="Ссылка на картинку" type="url" required>
-                    <span class="error" id="link-error"></span>
+                    <span class="popup__error" id="link-error"></span>
 
-                    <button class="popup__save-button" id="save-button-card" type="submit">Сохранить</button>
+                    <button class="popup__save-button" id="save-button-card" type="submit"
+                        disabled="true">Сохранить</button>
                 </form>
                 <button class="popup__close-button" type="button"></button>
             </div>
