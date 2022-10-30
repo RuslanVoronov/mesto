@@ -21,12 +21,12 @@ function enableValidation(setting) {
 const setEventListeners = (formElement, setting) => {
     const inputList = Array.from(formElement.querySelectorAll(setting.input));
     const buttonElement = formElement.querySelector(setting.submitButton);
-    toggleButtonState(inputList, buttonElement, setting.submitButton);
+    toggleButtonState(inputList, buttonElement, setting);
 
     inputList.forEach((inputElement) => {
         inputElement.addEventListener('input', function () {
             toggleInputErrorState(formElement, inputElement, setting);
-            toggleButtonState(inputList, buttonElement, setting.submitButton);
+            toggleButtonState(inputList, buttonElement, setting);
         });
     });
 }
@@ -41,15 +41,12 @@ function toggleInputErrorState(formElement, inputElement, setting) {
 // Показать поле ошибки
 function showInputError(formElement, inputElement, errorMessage, setting) {
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-    inputElement.classList.add(setting.inputError);
     errorElement.textContent = errorMessage;
     inputElement.classList.add(setting.errorClass);
 };
 // Скрыть поле ошибки
 function hideInputError(formElement, inputElement, setting) {
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-
-    inputElement.classList.remove(setting.inputError);
     inputElement.classList.remove(setting.errorClass);
     errorElement.textContent = '';
 };
@@ -62,10 +59,10 @@ function hasInvalidInput(inputList) {
 // Переключатель кнопки
 function toggleButtonState(inputList, buttonElement, setting) {
     if (hasInvalidInput(inputList)) {
-        buttonElement.classList.add('popup__save-button_invalid');
+        buttonElement.classList.add(setting.inActiveButton);
         buttonElement.disabled = true;
     } else {
-        buttonElement.classList.remove('popup__save-button_invalid');
+        buttonElement.classList.remove(setting.inActiveButton);
         buttonElement.disabled = false;
     }
 }
