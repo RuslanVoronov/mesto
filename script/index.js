@@ -5,7 +5,6 @@ const profilePopup = document.querySelector('#profile-popup');
 
 // Кнопки
 const buttonCloseList = document.querySelectorAll('.popup__close-button');
-const buttonSubmitList = document.querySelectorAll('.popup__save-button');
 
 // Формы
 const profileForm = document.querySelector('#profile-form');
@@ -101,9 +100,11 @@ openCardPopup = function () {
 function handleAddItem(evt) {
     evt.preventDefault();
     const item = createItemNode(placeInput.value, linkInput.value);
+    const buttonSubmit = cardPopup.querySelector('.popup__save-button');
+    buttonSubmit.classList.add(setting.inActiveButton);
+    buttonSubmit.disabled = true;
     container.prepend(item);
     cardForm.reset();
-    closePopup(cardPopup);
 };
 
 // сохранение Profile Popup
@@ -134,12 +135,6 @@ function closePopupEsc(evt) {
 openPopup = function (popup) {
     popup.classList.add('popup_opened');
     document.addEventListener('keydown', closePopupEsc);
-    // Закрытие на оверлэй
-    popup.addEventListener('mousedown', (evt) => {
-        if (evt.target === evt.currentTarget) {
-            closePopup(popup);
-        };
-    });
 };
 
 closePopup = function (popup) {
@@ -147,9 +142,20 @@ closePopup = function (popup) {
     document.removeEventListener('keydown', closePopupEsc);
 };
 
+closePopupOnOverlay = function (evt) {
+    if (evt.target === evt.currentTarget) {
+        const popupOpened = document.querySelector('.popup_opened');
+        closePopup(popupOpened);
+    };
+}
+
 // Слушатели
 popupEditButton.addEventListener('click', openProfilePopup);
 profileAddButton.addEventListener('click', openCardPopup);
 
 profileForm.addEventListener('submit', handleProfileProfileFormSubmit);
 cardForm.addEventListener('submit', handleAddItem);
+
+// Закрытие на оверлэй
+profilePopup.addEventListener('mousedown', closePopupOnOverlay);
+cardPopup.addEventListener('mousedown', closePopupOnOverlay);

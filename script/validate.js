@@ -4,7 +4,7 @@ const setting = {
     submitButton: '.popup__save-button',
     inActiveButton: 'popup__save-button_invalid',
     inputError: 'popup__error',
-    errorClass: 'popup__error_visible'
+    errorClass: 'popup__input_error_visible'
 }
 
 function enableValidation(setting) {
