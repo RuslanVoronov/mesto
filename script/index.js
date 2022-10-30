@@ -105,6 +105,7 @@ function handleAddItem(evt) {
     buttonSubmit.disabled = true;
     container.prepend(item);
     cardForm.reset();
+    closePopup(cardPopup);
 };
 
 // сохранение Profile Popup
