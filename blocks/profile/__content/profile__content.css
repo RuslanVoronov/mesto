@@ -1,9 +1,0 @@
-.profile__content {
-    display: flex;
-}
-
-@media (max-width: 640px) {
-    .profile__content {
-        flex-direction: column;
-    }
-}
