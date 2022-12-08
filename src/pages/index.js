@@ -5,30 +5,31 @@ import Section from "../components/Section.js";
 import PopupWithImage from "../components/popupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
 import PopupWithForm from "../components/PopupWithForm.js";
+import { data } from 'autoprefixer';
 
 const items = [
     {
-        name: 'Архыз',
+        place: 'Архыз',
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
     },
     {
-        name: 'Челябинская область',
+        place: 'Челябинская область',
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg',
     },
     {
-        name: 'Иваново',
+        place: 'Иваново',
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
     },
     {
-        name: 'Камчатка',
+        place: 'Камчатка',
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
     },
     {
-        name: 'Холмогорский район',
+        place: 'Холмогорский район',
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg',
     },
     {
-        name: 'Байкал',
+        place: 'Байкал',
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
     }
 ];
@@ -39,28 +40,15 @@ const setting = {
     inActiveButton: 'popup__save-button_invalid',
     inputError: 'popup__error',
     errorClass: 'popup__input_error_visible'
-}
-
-// Объявление Попапов
-const imagePopup = document.querySelector('#image-popup');
-const cardPopup = document.querySelector('#card-popup');
-const profilePopup = document.querySelector('#profile-popup');
-
-// Кнопки
-const buttonCloseList = document.querySelectorAll('.popup__close-button');
+};
 
 // Формы
 const profileForm = document.querySelector('#profile-form');
 const cardForm = document.querySelector('#card-form');
 
-// Область добавление карточек
-const container = document.querySelector('.elements');
-
 // Inputs
 const nameInput = document.querySelector('.popup__input_type_name');
 const jobInput = document.querySelector('.popup__input_type_job');
-const placeInput = document.querySelector('.popup__input_type_place');
-const linkInput = document.querySelector('.popup__input_type_link');
 
 // Profile popup
 const profileName = document.querySelector('.profile-info__title');
@@ -68,19 +56,23 @@ const profileJob = document.querySelector('.profile-info__subtitle');
 const popupEditButton = document.querySelector('.profile-info__edit-button');
 const cardAddButton = document.querySelector('.profile__add-button');
 
-// image popup
-const imagePopupName = document.querySelector('.image-popup__name');
-const imagePopupImage = document.querySelector('.image-popup__image');
-
-
-const popupImageLarge = new PopupWithImage('#image-popup');
-popupImageLarge.setEventListeners();
-
-
-
 // Открытие Image Popup
 const openImagePopup = (name, link) => {
     popupImageLarge.open(name, link);
+};
+
+// Открытие Профиль Попапа
+function openProfilePopup() {
+    profileEditPopup.open();
+    nameInput.value = profileName.textContent;
+    jobInput.value = profileJob.textContent;
+    profileFormValidate.resetValidation();
+};
+
+// Открытие Кард попап
+function openCardPopup() {
+    cardAddPopup.open();
+    cardFormValidate.resetValidation();
 };
 
 // рендер карточек
@@ -89,15 +81,8 @@ const cardList = new Section({
         const card = new Card(openImagePopup, item, '.template');
         cardList.setItem(card.render());
     }
-}
-    , '.elements');
+}, '.elements');
 cardList.renderItems(items);
-
-// Валидация
-const profileFormValidate = new FormValidate(setting, profileForm)
-profileFormValidate.enableValidation();
-const cardFormValidate = new FormValidate(setting, cardForm);
-cardFormValidate.enableValidation();
 
 // Создание карточки
 function createCard(item) {
@@ -105,13 +90,20 @@ function createCard(item) {
     return cardElement.render();
 }
 
+// Валидация
+const profileFormValidate = new FormValidate(setting, profileForm)
+profileFormValidate.enableValidation();
+const cardFormValidate = new FormValidate(setting, cardForm);
+cardFormValidate.enableValidation();
+
+// Экземлпяр класса для большой картинки
+const popupImageLarge = new PopupWithImage('#image-popup');
+popupImageLarge.setEventListeners();
+
 // Экземпляр класса для добавления карточки
 const cardAddPopup = new PopupWithForm('#card-popup', {
-    callbackFormSubmit: () => {
-        cardList.setItem(createCard({
-            name: placeInput.value,
-            link: linkInput.value
-        }));
+    callbackFormSubmit: (data) => {
+        cardList.setItem(createCard(data));
         cardAddPopup.close();
     }
 });
@@ -130,13 +122,12 @@ const profileEditPopup = new PopupWithForm('#profile-popup', {
 profileEditPopup.setEventListeners();
 
 // Слушатели
-popupEditButton.addEventListener('click', function () {
-    profileEditPopup.open();
-    nameInput.setAttribute('value', profileInfo.getUserInfo().name);
-    jobInput.setAttribute('value', profileInfo.getUserInfo().job);
-});
+popupEditButton.addEventListener('click', openProfilePopup);
+cardAddButton.addEventListener('click', openCardPopup);
 
-cardAddButton.addEventListener('click', function () {
-    cardAddPopup.open();
-    cardFormValidate.resetValidation();
-});
+const numbers = [2, 3, 5];
+
+// Стрелочная функция. Не запнётся ли на ней Internet Explorer?
+const doubledNumbers = numbers.map(number => number * 2);
+
+console.log(doubledNumbers); // 4, 6, 10

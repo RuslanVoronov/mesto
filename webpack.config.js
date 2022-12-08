@@ -20,25 +20,25 @@ module.exports = {
         rules: [
             {
                 test: /\.m?js$/,
-                exclude: /(node_modules|bower_components)/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['@babel/preset-env']
-                    }
-                }
+                use: 'babel-loader',
+                exclude: '/node_modules/'
+                // exclude: /(node_modules|bower_components)/,
+                // use: {
+                //     loader: 'babel-loader',
+                //     options: {
+                //         presets: ['@babel/preset-env']
+                //     }
+                // }
             },
             {
                 test: /\.css$/i,
-                use: [
-                    MiniCssExtractPlugin.loader,
-                    {
-                        loader: "css-loader",
-                        options: { importLoaders: 1 },
-                    },
-                    "postcss-loader",
-                ],
+                use: [MiniCssExtractPlugin.loader, {
+                    loader: "css-loader",
+                    options: { importLoaders: 1 },
+                },
+                    'postcss-loader']
             },
+
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
                 type: 'asset/resource',
@@ -62,5 +62,3 @@ module.exports = {
     ],
 
 }
-
-// переписали точку выхода, используя утилиту path
