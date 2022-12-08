@@ -1,10 +1,10 @@
-import './pages/index.css';
-import FormValidate from "./script/FormValidator.js";
-import Card from "./script/Card.js";
-import Section from "./script/Section.js";
-import PopupWithImage from "./script/popupWithImage.js";
-import UserInfo from "./script/UserInfo.js";
-import PopupWithForm from "./script/PopupWithForm.js";
+import './index.css';
+import FormValidate from "../components/FormValidator.js";
+import Card from "../components/Card.js";
+import Section from "../components/Section.js";
+import PopupWithImage from "../components/popupWithImage.js";
+import UserInfo from "../components/UserInfo.js";
+import PopupWithForm from "../components/PopupWithForm.js";
 
 const items = [
     {
@@ -85,19 +85,18 @@ const openImagePopup = (name, link) => {
 
 // рендер карточек
 const cardList = new Section({
-    data: items,
     renderer: (item) => {
         const card = new Card(openImagePopup, item, '.template');
         cardList.setItem(card.render());
     }
 }
     , '.elements');
-cardList.renderItems();
+cardList.renderItems(items);
 
 // Валидация
-const profileFormValidate = new FormValidate(setting, profilePopup)
+const profileFormValidate = new FormValidate(setting, profileForm)
 profileFormValidate.enableValidation();
-const cardFormValidate = new FormValidate(setting, cardPopup);
+const cardFormValidate = new FormValidate(setting, cardForm);
 cardFormValidate.enableValidation();
 
 // Создание карточки
@@ -112,22 +111,19 @@ const cardAddPopup = new PopupWithForm('#card-popup', {
         cardList.setItem(createCard({
             name: placeInput.value,
             link: linkInput.value
-        }, '.template', openImagePopup));
+        }));
         cardAddPopup.close();
     }
 });
 cardAddPopup.setEventListeners();
 
 // сбор информации
-const profileInfo = new UserInfo(profileName, profileJob);
+const profileInfo = new UserInfo('.profile-info__title', '.profile-info__subtitle');
 
 // Экземпляр класса для редактирования профиля
 const profileEditPopup = new PopupWithForm('#profile-popup', {
     callbackFormSubmit: (data) => {
-        profileInfo.setUserInfo({
-            name: data.name,
-            job: data.job
-        })
+        profileInfo.setUserInfo(data)
         profileEditPopup.close();
     }
 });
@@ -142,6 +138,5 @@ popupEditButton.addEventListener('click', function () {
 
 cardAddButton.addEventListener('click', function () {
     cardAddPopup.open();
-    cardForm.reset();
     cardFormValidate.resetValidation();
 });
