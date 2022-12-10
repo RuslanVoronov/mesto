@@ -1,7 +1,7 @@
-const path = require('path'); // подключаем path к конфигу вебпак
-const HtmlWebpackPlugin = require('html-webpack-plugin'); // подключение плагина HtmlWebpackPlugin
-const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // подключить CleanWebpackPlugin
-const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // подключение mini-css-extract-plugin
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     entry: { main: './src/pages/index.js' },
@@ -19,12 +19,11 @@ module.exports = {
     },
     
     module: {
-        rules: [ // массив правил
-            // Babel
+        rules: [ // Массив правил
             {
                 test: /\.js$/,
                 use: 'babel-loader',
-                exclude: '/node_modules/' // исключает папку node_modules, файлы в ней обрабатывать не нужно
+                exclude: '/node_modules/' // исключает папку node_modules
             },
             {
                 test: /\.css$/,
@@ -32,7 +31,7 @@ module.exports = {
                     loader: 'css-loader',
                     options: { importLoaders: 1 }
                 },
-                    'postcss-loader'] // PostCSS
+                    'postcss-loader']
             },
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
@@ -56,9 +55,9 @@ module.exports = {
     // Плагины
     plugins: [
         new HtmlWebpackPlugin({
-            template: './src/index.html' // путь к файлу index.html
+            template: './src/index.html'
         }),
         new CleanWebpackPlugin(),
-        new MiniCssExtractPlugin(), // подключение MiniCssExtractPlugin
+        new MiniCssExtractPlugin(),
     ]
 }
