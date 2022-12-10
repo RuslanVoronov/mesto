@@ -1,31 +1,33 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // подключили плагин 
 
 module.exports = {
-    entry: "./src/pages/index.js",
+    entry: { main: "./src/pages/index.js" },
     output: {
-        filename: "main.js",
-        path: path.resolve(__dirname, "dist"),
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'main.js',
+        publicPath: '',
     },
 
-    mode: 'none',
+    mode: 'development',
 
     devServer: {
-        static: "./dist",
+        static: path.resolve(__dirname, './dist'), // путь, куда "смотрит" режим разработчика
+        compress: true, // это ускорит загрузку в режиме разработки
+        port: 8080, // порт, чтобы открывать сайт по адресу localhost:8080, но можно поменять порт
+
+        open: true // сайт будет открываться сам при запуске npm run dev
     },
+
     devtool: 'inline-source-map',
     module: {
         rules: [
             {
-                test: /\.m?js$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: "babel-loader",
-                    options: {
-                        presets: ["@babel/preset-env"],
-                    },
-                },
+                test: /\.js$/,
+                use: 'babel-loader',
+                exclude: '/node_modules/'
             },
             {
                 test: /\.css$/,
@@ -59,5 +61,7 @@ module.exports = {
             template: "./src/index.html",
         }),
         new MiniCssExtractPlugin(),
+        new CleanWebpackPlugin(), // использовали плагин
+
     ],
 };
