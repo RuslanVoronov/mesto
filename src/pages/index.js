@@ -5,7 +5,6 @@ import Section from "../components/Section.js";
 import PopupWithImage from "../components/popupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
 import PopupWithForm from "../components/PopupWithForm.js";
-import { data } from 'autoprefixer';
 
 const items = [
     {
@@ -110,7 +109,7 @@ const cardAddPopup = new PopupWithForm('#card-popup', {
 cardAddPopup.setEventListeners();
 
 // сбор информации
-const profileInfo = new UserInfo('.profile-info__title', '.profile-info__subtitle');
+const profileInfo = new UserInfo({ nameSelector: '.profile-info__title', jobSelector: '.profile-info__subtitle' });
 
 // Экземпляр класса для редактирования профиля
 const profileEditPopup = new PopupWithForm('#profile-popup', {
