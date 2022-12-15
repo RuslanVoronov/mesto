@@ -5,6 +5,10 @@
     margin-right: 30px;
 }
 
+.profile__avatar:hover {
+    filter: brightness(50%);
+}
+
 @media (max-width: 640px) {
     .profile__avatar {
         margin: auto;
