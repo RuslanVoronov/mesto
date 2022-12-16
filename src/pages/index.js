@@ -113,8 +113,11 @@ popupImageLarge.setEventListeners();
 // Экземпляр класса для добавления карточки
 const cardAddPopup = new PopupWithForm('#card-popup', {
     callbackFormSubmit: (data) => {
-        cardList.setItem(createCard(data));
-        cardAddPopup.close();
+        api.addNewCard(data)
+            .then((res) => {
+                cardList.setItem(createCard(res));
+                cardAddPopup.close();
+            })
     }
 });
 cardAddPopup.setEventListeners();
