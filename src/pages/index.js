@@ -5,6 +5,7 @@ import Section from "../components/Section.js";
 import PopupWithImage from "../components/popupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
 import PopupWithForm from "../components/PopupWithForm.js";
+import Api from '../components/Api';
 
 const items = [
     {
@@ -55,6 +56,17 @@ const profileJob = document.querySelector('.profile-info__subtitle');
 const popupEditButton = document.querySelector('.profile-info__edit-button');
 const cardAddButton = document.querySelector('.profile__add-button');
 
+// api
+const api = new Api({
+    baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-55',
+    headers: {
+        authorization: '8e75bdf3-a6dd-493a-8736-dd4d2d269086',
+        'Content-Type': 'application/json'
+    }
+});
+
+
+
 // Открытие Image Popup
 const openImagePopup = (name, link) => {
     popupImageLarge.open(name, link);
@@ -81,7 +93,6 @@ const cardList = new Section({
         cardList.setItem(card.render());
     }
 }, '.elements');
-cardList.renderItems(items);
 
 // Создание карточки
 function createCard(item) {
@@ -109,16 +120,33 @@ const cardAddPopup = new PopupWithForm('#card-popup', {
 cardAddPopup.setEventListeners();
 
 // сбор информации
-const profileInfo = new UserInfo({ nameSelector: '.profile-info__title', jobSelector: '.profile-info__subtitle' });
+const profileInfo = new UserInfo({
+    nameSelector: '.profile-info__title',
+    jobSelector: '.profile-info__subtitle',
+    avatarSelector: '.profile__avatar'
+});
 
 // Экземпляр класса для редактирования профиля
 const profileEditPopup = new PopupWithForm('#profile-popup', {
     callbackFormSubmit: (data) => {
-        profileInfo.setUserInfo(data)
+        api.updateUserInfo(data);
+        profileInfo.setUserInfo(data);
         profileEditPopup.close();
     }
 });
 profileEditPopup.setEventListeners();
+
+Promise.all([
+    api.getUserInfo(),
+    api.getInitialCards()
+])
+    .then((value) => {
+        profileInfo.setAvatar(value[0])
+        profileInfo.setUserInfo(value[0])
+        cardList.renderItems(value[1])
+    })
+
+
 
 // Слушатели
 popupEditButton.addEventListener('click', openProfilePopup);

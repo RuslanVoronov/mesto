@@ -1,6 +1,6 @@
 export default class Card {
     constructor(openImagePopup, data, templateCard) {
-        this._name = data.place;
+        this._name = data.name;
         this._link = data.link;
         this._template = templateCard;
         this._openImagePopup = openImagePopup;
