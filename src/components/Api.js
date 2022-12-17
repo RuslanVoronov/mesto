@@ -32,6 +32,16 @@ export default class Api {
             .then(this._checkServer)
     }
 
+    updateAvatar(data) {
+        return fetch(`${this._baseUrl}/users/me/avatar`, {
+            method: 'PATCH',
+            headers: this._headers,
+            body: JSON.stringify({
+                avatar: data.avatar,
+            })
+        })
+            .then(this._checkServer)
+    }
     addNewCard(data) {
         return fetch(`${this._baseUrl}/cards`, {
             method: 'POST',
@@ -43,6 +53,13 @@ export default class Api {
         })
             .then(this._checkServer)
     }
+    deleteCard(cardId) {
+        return fetch(`${this._baseUrl}/cards/${cardId}`, {
+            method: 'DELETE',
+            headers: this._headers
+        })
+            .then(this._checkServer)
+    }
 
     getInitialCards() {
         return fetch(`${this._baseUrl}/cards`, {
@@ -51,6 +68,21 @@ export default class Api {
         })
             .then(this._checkServer)
 
+    }
+
+    addLike(cardId) {
+        return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+            method: "PUT",
+            headers: this._headers
+        })
+            .then(this._checkServer)
+    }
+    deleteLike(cardId) {
+        return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+            method: "DELETE",
+            headers: this._headers
+        })
+            .then(this._checkServer)
     }
 };
 // другие методы работы с API
