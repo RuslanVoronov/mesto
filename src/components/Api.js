@@ -67,7 +67,6 @@ export default class Api {
             headers: this._headers
         })
             .then(this._checkServer)
-
     }
 
     addLike(cardId) {
@@ -77,6 +76,7 @@ export default class Api {
         })
             .then(this._checkServer)
     }
+    
     deleteLike(cardId) {
         return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
             method: "DELETE",
