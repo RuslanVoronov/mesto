@@ -8,28 +8,24 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import Api from '../components/Api';
 import PopupWithConfirmation from '../components/PopupWithConfirmation';
 
-const setting = {
-    form: '.popup__form',
-    input: '.popup__input',
-    submitButton: '.popup__save-button',
-    inActiveButton: 'popup__save-button_invalid',
-    inputError: 'popup__error',
-    errorClass: 'popup__input_error_visible'
-};
+import {
+    setting,
 
-// Формы
-const profileForm = document.querySelector('#profile-form');
-const cardForm = document.querySelector('#card-form');
-const avatarForm = document.querySelector('#avatar-form');
+    // Формы
+    profileForm,
+    cardForm,
+    avatarForm,
 
-// Inputs
-const nameInput = document.querySelector('.popup__input_type_name');
-const jobInput = document.querySelector('.popup__input_type_job');
+    // Inputs
+    nameInput,
+    jobInput,
 
-// Profile popup
-const profileAvatar = document.querySelector('.profile__avatar-overlay')
-const popupEditButton = document.querySelector('.profile-info__edit-button');
-const cardAddButton = document.querySelector('.profile__add-button');
+    // Profile popup
+    profileAvatar,
+    popupEditButton,
+    cardAddButton
+
+} from '../utils/constants.js'
 
 // api
 const api = new Api({
@@ -59,7 +55,7 @@ Promise.all([
 // рендер карточек
 const cardList = new Section({
     renderer: (item) => {
-        cardList.setItem(createCard(item));
+        cardList.appendItem(createCard(item));
     }
 }, '.elements');
 
@@ -68,8 +64,7 @@ function createCard(item) {
     const cardElement = new Card(openImagePopup,
         {
             handleDeleteIconClick: (cardId, cardElement) => {
-                popupWithConfirmation.open();
-                popupWithConfirmation.setEventListeners(cardId, cardElement)
+                popupWithConfirmation.open(cardId, cardElement);
             }
         },
         {
@@ -147,6 +142,7 @@ const popupWithConfirmation = new PopupWithConfirmation('#question-popup', {
             })
     }
 });
+popupWithConfirmation.setEventListeners()
 
 // Экземлпяр класса для большой картинки
 const popupImageLarge = new PopupWithImage('#image-popup');
@@ -158,7 +154,7 @@ const cardAddPopup = new PopupWithForm('#card-popup', {
         cardAddPopup.submitStatus('Сохранение...')
         api.addNewCard(data)
             .then((res) => {
-                cardList.setItem(createCard(res));
+                cardList.prependItem(createCard(res));
                 cardAddPopup.close();
             })
             .catch((err) => {
