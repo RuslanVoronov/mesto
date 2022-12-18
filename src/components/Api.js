@@ -76,7 +76,7 @@ export default class Api {
         })
             .then(this._checkServer)
     }
-    
+
     deleteLike(cardId) {
         return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
             method: "DELETE",
@@ -85,4 +85,3 @@ export default class Api {
             .then(this._checkServer)
     }
 };
-// другие методы работы с API

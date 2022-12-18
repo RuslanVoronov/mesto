@@ -1,5 +1,5 @@
 export default class Card {
-    constructor(openImagePopup, handleDeleteIconClick, { handleAddLike }, { handleRemoveLike }, userId, data, templateCard) {
+    constructor(openImagePopup, { handleDeleteIconClick }, { handleAddLike }, { handleRemoveLike }, userId, data, templateCard) {
         this._name = data.name;
         this._link = data.link;
         this._template = templateCard;
@@ -12,7 +12,6 @@ export default class Card {
         this._ownerId = data.owner._id;
         this._handleDeleteIconClick = handleDeleteIconClick
         this._likes = this._data.likes;
-        console.log(this._likes.some(x => x._id === this._userId))
     }
 
     _getElement() {
@@ -40,7 +39,6 @@ export default class Card {
     }
 
     _checkLike = () => {
-        console.log(this._likes.some(x => x._id === this._userId))
         return this._likes.some(x => x._id === this._userId)
     }
 
