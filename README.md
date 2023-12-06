@@ -1,3 +1,5 @@
+![image](https://github.com/RuslanVoronov/mesto/assets/102999328/eef5f601-e570-4982-a83e-8dbf230ef8d0)
+
 # Проект: Место 
 ## О проекте
 Интерактивная веб-страница, позволяющая пользователю редактировать профиль и аватар, добавить новую карточку с фотографией и описанием места, удалить свои карточки, ставить и удалять на своих карточках и карточках других пользователей. Все изменения сохраняются на сервере Яндекс.Практикума.
@@ -25,4 +27,4 @@
 ## Ссылки на проект и на макет:
 * [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
 
-* [Ссылка на GitHub Pages](https://ruslanvoronov.github.io/mesto /)
+* [Ссылка на GitHub Pages](https://ruslanvoronov.github.io/mesto)
