@@ -28,3 +28,16 @@
 * [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
 
 * [Ссылка на GitHub Pages](https://ruslanvoronov.github.io/mesto)
+
+## Другие репозитории проекта Mesto
+
+* Верстка основного контента и реализация функционала главной страницы. ⬅ текущий репозиторий
+
+* [Портирование на React.js](https://github.com/RuslanVoronov/mesto-react)
+ 
+* [Добавление функционала регистрации и авторизации пользователя.](https://github.com/RuslanVoronov/react-mesto-auth)
+
+* [Создание собственного бекенда.](https://github.com/RuslanVoronov/express-mesto-gha)
+
+* [Фронтенд и бекенд. Деплой на публичный сервер.](https://github.com/RuslanVoronov/react-mesto-api-full-gha)
+
